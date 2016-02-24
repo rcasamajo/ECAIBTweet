@@ -8,15 +8,15 @@ app.controller('mainController', ["$scope", "$firebaseArray", function($scope, $
     $scope.dir = "toF";
 
     // create a reference to the database location where we will store our data
-    var ref = new Firebase("https://ecaibtweet.firebaseio.com/tweets/");
+    var ref = new Firebase("https://ecaibtweet.firebaseio.com/users/");
 
-    $scope.tweets = $firebaseArray(ref);
+    var query = ref.orderByChild("users").equalTo("rcc");
+    $scope.tweets = $firebaseArray(query).tweets;
 
     // if the messages are empty, add something for fun!
     $scope.tweets.$loaded(function() {
         if ($scope.tweets.length === 0) {
             $scope.tweets.$add({
-                user: "admin",
                 text: "Hello world!"
             });
         }

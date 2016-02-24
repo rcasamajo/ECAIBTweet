@@ -22,30 +22,18 @@
 
 <body ng-app="mainApp" ng-controller="mainController">
 <div class="container">
-    <div class="panel panel-primary">
-        <div class="row panel-heading">
-            <div class="col-md-offset-2 col-md-8 col-md-offset-2 text-center">
-                <h1>ECAIBTweet</h1>
-            </div>
+    <div class="row">
+        <div class="col-md-offset-1 col-md-3" id="left">
+            <h1>ECAIBTweet</h1>
+            <p>_tweet:</p>
+            <p><input type="text" ng-model="tweet"></p>
+            <p>_user:</p>
+            <p><input type="text" ng-model="user"></p>
         </div>
-        <div class="panel-body">
-            <div class="row text-center">
-                <div class="col-md-offset-2 col-md-4">
-                    <p>_tweet:</p>
-                    <p><input type="text" ng-model="cel" ng-change="calc()"></p>
-                </div>
-
-                <div class="col-md-4">
-                </div>
-            </div>
-
-            <div class="row text-center">
-                <div class="col-md-offset-4 col-md-4 col-md-offset-4">
-                    <ul class="chatbox">
-                        <li ng-repeat="tweet in tweets">{{ tweet.user }}: {{ tweet.text }}</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="col-md-offset-2 col-md-6" id="right">
+            <ul class="chatbox">
+                <li ng-repeat="tweet in tweets">rcc: {{ tweet.text }}</li>
+            </ul>
         </div>
     </div>
 </div>
