@@ -31,8 +31,9 @@
             <p><input type="text" ng-model="user"></p>
         </div>
         <div class="col-md-offset-2 col-md-6" id="right">
+            {{ tweets }}
             <ul class="chatbox">
-                <li ng-repeat="tweet in tweets">rcc: {{ tweet.text }}</li>
+                <li ng-repeat="tweet in tweets">{{ tweet.name }}: {{ tweet.tweets }}</li>
             </ul>
         </div>
     </div>
