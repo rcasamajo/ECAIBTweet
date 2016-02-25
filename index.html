@@ -31,9 +31,13 @@
             <p><input type="text" ng-model="user"></p>
         </div>
         <div class="col-md-offset-2 col-md-6" id="right">
-            {{ tweets }}
+            <p>{{ user[0].name }}:</p>
             <ul class="chatbox">
-                <li ng-repeat="tweet in tweets">{{ tweet.name }}: {{ tweet.tweets }}</li>
+                <li ng-repeat="tweet in user[0].tweets">{{ tweet }}</li>
+            </ul>
+            <p>Following:</p>
+            <ul class="chatbox">
+                <li ng-repeat="usr in user[0].following">{{ usr }}</li>
             </ul>
         </div>
     </div>
