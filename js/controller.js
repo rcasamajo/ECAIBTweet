@@ -2,7 +2,8 @@
  * Created by rcasamajo on 18/2/16.
  */
 
-app.controller('mainController', ["$scope", "$firebaseArray", function($scope, $firebaseObject, $firebaseArray) {
+app.controller('mainController', ["$scope", "$firebaseObject", "$firebaseArray", "getFollowings",
+    function($scope, $firebaseObject, $firebaseArray, getFollowings) {
 
     $scope.userId = "rcc";
 
@@ -11,5 +12,7 @@ app.controller('mainController', ["$scope", "$firebaseArray", function($scope, $
 
     var query = ref.orderByKey().equalTo($scope.userId);
     $scope.user = $firebaseObject(query);
+
+    $scope.followings = getFollowings;
 
 }]);
