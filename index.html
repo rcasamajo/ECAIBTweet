@@ -27,19 +27,16 @@
             <h1>ECAIBTweet</h1>
             <p>_user:</p>
             <p><input type="text" ng-model="userId"></p>
+            <p><input type="button" value="login" ng-click="setUser()"></p>
             <p>_tweet:</p>
             <p><input type="text" ng-model="tweet"></p>
         </div>
         <div class="col-md-offset-2 col-md-6" id="right">
-            <p>{{ user[0].name }}:</p>
+            <p>{{ userId }}:{{ userName }}:</p>
             <ul class="chatbox">
-                <li ng-repeat="tweet in user[0].tweets">{{ tweet }}</li>
+                <li ng-repeat="tweet in userTweets">{{ tweet }}</li>
             </ul>
             <p>Following:</p>
-            {{ followings }}
-            <ul class="chatbox">
-                <li ng-repeat="usr in user[0].following">{{ usr }}</li>
-            </ul>
         </div>
     </div>
 </div>

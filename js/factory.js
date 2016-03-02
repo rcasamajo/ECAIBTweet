@@ -1,15 +1,11 @@
-app.factory("userTweets", ["$firebaseArray",
+app.factory("getUserTweets", ["$firebaseArray",
     function($firebaseArray) {
-        return function(p1,p2) {
+        return function(usuari) {
             var ref = new Firebase("https://ecaibtweet.firebaseio.com/users");
-            return $firebaseObject(ref.child(""));
-            return p1.toString() + ' + ' + p2.toString();
+            return $firebaseArray(ref.child(usuari).child("tweets"));
         };
     }
 ]);
 
-app.factory('followingTweets', function() {
-    var ref = new Firebase("https://ecaibtweet.firebaseio.com/users");
-    var usuari = ref.child($scope.userId);
-    return usuari.followings;
+app.factory("getFollowingTweets", function() {
 });

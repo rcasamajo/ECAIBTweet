@@ -2,17 +2,22 @@
  * Created by rcasamajo on 18/2/16.
  */
 
-app.controller('mainController', ["$scope", "$firebaseObject", "$firebaseArray", "getFollowings",
-    function($scope, $firebaseObject, $firebaseArray, getFollowings) {
+app.controller('mainController', ["$scope", "$firebaseObject", "$firebaseArray", "getUserTweets",
+    function($scope, $firebaseObject, $firebaseArray, getUserTweets) {
 
-    $scope.userId = "rcc";
+        // create a reference to the database location where we will store our data
+        var ref = new Firebase("https://ecaibtweet.firebaseio.com/users");
 
-    // create a reference to the database location where we will store our data
-    var ref = new Firebase("https://ecaibtweet.firebaseio.com/users");
+        //var query = ref.orderByKey().equalTo($scope.userId);
+        //$scope.user = $firebaseObject(query);
 
-    var query = ref.orderByKey().equalTo($scope.userId);
-    $scope.user = $firebaseObject(query);
+        $scope.userId = "";
+        $scope.userName = "";
+        $scope.userTweets = "";
 
-    $scope.followings = getFollowings;
+        $scope.setUser = function() {
+                $scope.userName = $firebaseObject(ref.child($scope.userId).child("name"));
+                $scope.userTweets = getUserTweets($scope.userId);
+            };
 
 }]);
