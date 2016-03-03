@@ -23,21 +23,32 @@
 <body ng-app="mainApp" ng-controller="mainController">
 <div class="container">
     <div class="row">
+
         <div class="col-md-offset-1 col-md-3" id="left">
             <h1>ECAIBTweet</h1>
-            <p>_user:</p>
-            <p><input type="text" ng-model="userId"></p>
-            <p><input type="button" value="login" ng-click="setUser()"></p>
-            <p>_tweet:</p>
-            <p><input type="text" ng-model="tweet"></p>
-        </div>
-        <div class="col-md-offset-2 col-md-6" id="right">
-            <p>{{ userId }}:{{ userName }}:</p>
+            <p><input type="text" ng-model="usuari"><input type="button" value="_login" ng-click="setUser()"></p>
+
+            <p>_user: {{ userId }}</p>
+            <p>_name: {{ userName.$value }}</p>
+            <p>_description: {{ userDesc.$value }}</p>
+            <p><input type="text" ng-model="usuari2Follow"><input type="button" value="_follow" ng-click="follow()"></p>
+
+            <p><input type="text" ng-model="tweetTxt"><input type="button" value="_tweet" ng-click="tweet()"></p>
+
+            <p>_following: </p>
             <ul class="chatbox">
-                <li ng-repeat="tweet in userTweets">{{ tweet }}</li>
+                <li ng-repeat="follow in followings">{{ follow.idUser }}</li>
             </ul>
-            <p>Following:</p>
         </div>
+
+        <div class="col-md-offset-2 col-md-6" id="right">
+            <h3>_feed:</h3>
+
+            <ul class="chatbox">
+                <li ng-repeat="tweet in userTweets">{{ tweet.text }}</li>
+            </ul>
+        </div>
+
     </div>
 </div>
 
