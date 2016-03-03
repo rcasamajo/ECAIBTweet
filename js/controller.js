@@ -2,16 +2,15 @@
  * Created by rcasamajo on 18/2/16.
  */
 
-app.controller('mainController', ["$scope", "$firebaseObject", "$firebaseArray", "getUserTweets", "getFollowings", "getFollowingTweets",
-    function($scope, $firebaseObject, $firebaseArray, getUserTweets, getFollowings, getFollowingTweets) {
-
-        var ref = new Firebase("https://ecaibtweet.firebaseio.com/users");
+app.controller('mainController', ["$scope", "getUser", "getUserTweets", "getFollowings", "getFollowingTweets",
+    function($scope, getUser, getUserTweets, getFollowings, getFollowingTweets) {
 
         $scope.setUser = function() {
             $scope.userId = $scope.usuari;
             $scope.usuari = "";
-            $scope.userName = $firebaseObject(ref.child($scope.userId).child("name"));
-            $scope.userDesc = $firebaseObject(ref.child($scope.userId).child("description"));
+            var dades = getUser($scope.userId);
+            $scope.userName = dades.nom;
+            $scope.userDesc = dades.desc;
             $scope.userTweets = getUserTweets($scope.userId);
             $scope.followings = getFollowings($scope.userId);
             $scope.followingTweets = getFollowingTweets($scope.userId);
